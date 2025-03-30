@@ -606,7 +606,7 @@ const ProjectPulseTimeline = () => {
             </div>
 
             {/* Dependencies toggle */}
-            <button
+            {/* <button
               onClick={() => setShowDependencies(!showDependencies)}
               className={`px-4 py-2 rounded-lg transition-all flex items-center space-x-2 ${
                 showDependencies
@@ -616,7 +616,7 @@ const ProjectPulseTimeline = () => {
             >
               <Link size={16} />
               <span>Dependencies</span>
-            </button>
+            </button> */}
           </div>
         </div>
 

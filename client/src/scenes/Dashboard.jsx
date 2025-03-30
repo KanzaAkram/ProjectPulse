@@ -15,91 +15,6 @@ import {
   Target,
   ArrowRight,
 } from "lucide-react";
-import "./ProjectOverview.css";
-
-// First, we'll create a separate CSS file to import
-// This would be in a file named ProjectOverview.css
-
-/*
-Create this CSS file and import it at the top of your component:
-
-@keyframes blob {
-  0% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes draw-line {
-  0% { stroke-dasharray: 1000; stroke-dashoffset: 1000; }
-  100% { stroke-dasharray: 1000; stroke-dashoffset: 0; }
-}
-
-@keyframes bounce-once {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
-}
-
-@keyframes glow-once {
-  0% { filter: drop-shadow(0 0 0px #ff4d8d); }
-  50% { filter: drop-shadow(0 0 8px #ff4d8d); }
-  100% { filter: drop-shadow(0 0 0px #ff4d8d); }
-}
-
-@keyframes ping-slow {
-  0% { transform: scale(0.8); opacity: 1; }
-  70%, 100% { transform: scale(2); opacity: 0; }
-}
-
-@keyframes pulse-once {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 141, 0.7); }
-  70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(255, 77, 141, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 141, 0); }
-}
-
-.animate-blob {
-  animation: blob 7s infinite alternate;
-}
-
-.animate-draw-line {
-  animation: draw-line 1.5s ease-out forwards;
-}
-
-.animate-bounce-once {
-  animation: bounce-once 1s;
-}
-
-.animate-glow-once {
-  animation: glow-once 2s;
-}
-
-.animate-ping-slow {
-  animation: ping-slow 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-.animate-pulse-once {
-  animation: pulse-once 2s;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-*/
-
-// Now, let's update the component to use standard CSS and Tailwind approaches
 
 const ProjectOverview = () => {
   // Animation states
@@ -147,15 +62,15 @@ const ProjectOverview = () => {
       shape: "circle",
       pulseColor: "rgba(242, 19, 104, 0.3)",
     },
-    {
-      id: "research",
-      name: "Research",
-      progress: 30,
-      tasks: 5,
-      color: "#ff4d8d",
-      shape: "triangle",
-      pulseColor: "rgba(255, 77, 141, 0.3)",
-    },
+    // {
+    //   id: "research",
+    //   name: "Research",
+    //   progress: 30,
+    //   tasks: 5,
+    //   color: "#ff4d8d",
+    //   shape: "triangle",
+    //   pulseColor: "rgba(255, 77, 141, 0.3)",
+    // },
   ];
 
   // Task flow data for the dynamic flow visualization
@@ -208,14 +123,9 @@ const ProjectOverview = () => {
     switch (category.shape) {
       case "hexagon":
         return (
-          <div className="relative">
+          <div className={`relative ${isPulsing ? "animate-pulse" : ""}`}>
             <div
-              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rotate-45 overflow-hidden 
-                ${isActive ? "shadow-lg" : "border-gray-700"}`}
-              style={{
-                borderColor: isActive ? category.color : "",
-                boxShadow: isActive ? `0 0 15px ${category.color}` : "",
-              }}
+              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rotate-45 overflow-hidden ${isActive ? `border-${category.color} shadow-lg shadow-${category.color}` : "border-gray-700"}`}
             >
               <div className="-rotate-45 w-full h-full flex flex-col items-center justify-center">
                 <span className="text-xl font-bold">{category.progress}%</span>
@@ -234,12 +144,7 @@ const ProjectOverview = () => {
         return (
           <div className="relative">
             <div
-              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rounded-sm overflow-hidden
-                ${isActive ? "shadow-lg" : "border-gray-700"}`}
-              style={{
-                borderColor: isActive ? category.color : "",
-                boxShadow: isActive ? `0 0 15px ${category.color}` : "",
-              }}
+              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rounded-sm overflow-hidden ${isActive ? `border-${category.color} shadow-lg shadow-${category.color}` : "border-gray-700"}`}
             >
               <div className="w-full h-full flex flex-col items-center justify-center">
                 <span className="text-xl font-bold">{category.progress}%</span>
@@ -258,12 +163,7 @@ const ProjectOverview = () => {
         return (
           <div className="relative">
             <div
-              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rounded-full overflow-hidden
-                ${isActive ? "shadow-lg" : "border-gray-700"}`}
-              style={{
-                borderColor: isActive ? category.color : "",
-                boxShadow: isActive ? `0 0 15px ${category.color}` : "",
-              }}
+              className={`w-32 h-32 bg-black border-2 transition-all duration-500 rounded-full overflow-hidden ${isActive ? `border-${category.color} shadow-lg shadow-${category.color}` : "border-gray-700"}`}
             >
               <div className="w-full h-full flex flex-col items-center justify-center">
                 <span className="text-xl font-bold">{category.progress}%</span>
@@ -282,24 +182,30 @@ const ProjectOverview = () => {
         return (
           <div className="relative flex items-center justify-center h-32">
             <div
-              className="w-0 h-0 transition-all duration-500 overflow-visible border-l-[55px] border-r-[55px] border-b-[110px]"
-              style={{
-                borderLeftColor: isActive ? "transparent" : "#374151",
-                borderRightColor: isActive ? "transparent" : "#374151",
-                borderBottomColor: isActive ? category.color : "#374151",
-                filter: isActive
-                  ? `drop-shadow(0 0 10px ${category.color})`
-                  : "none",
-              }}
+              className={`w-0 h-0 transition-all duration-500 overflow-visible
+              border-l-[55px] border-r-[55px] border-b-[110px]
+              ${isActive ? "border-l-transparent border-r-transparent" : "border-l-gray-700 border-r-gray-700 border-b-gray-700"}`}
             >
               <div className="absolute -left-12 -bottom-8 w-24 flex flex-col items-center">
                 <span className="text-xl font-bold">{category.progress}%</span>
                 <span className="text-sm text-gray-400">{category.name}</span>
               </div>
             </div>
+            {isActive && (
+              <div
+                className={`absolute w-0 h-0 border-l-[55px] border-r-[55px] border-b-[110px] 
+                border-l-transparent border-r-transparent shadow-lg`}
+                style={{
+                  borderBottomColor: category.color,
+                  filter: `drop-shadow(0 0 10px ${category.color})`,
+                }}
+              ></div>
+            )}
             {isPulsing && (
               <div
-                className="absolute w-0 h-0 border-l-[55px] border-r-[55px] border-b-[110px] border-l-transparent border-r-transparent animate-ping opacity-20"
+                className="absolute w-0 h-0 
+                border-l-[55px] border-r-[55px] border-b-[110px]
+                border-l-transparent border-r-transparent animate-ping opacity-20"
                 style={{ borderBottomColor: category.pulseColor }}
               ></div>
             )}
@@ -342,7 +248,7 @@ const ProjectOverview = () => {
             r={radius}
             cx={size / 2}
             cy={size / 2}
-            style={{ transition: "all 1s ease-out" }}
+            className="transition-all duration-1000 ease-out"
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -355,50 +261,21 @@ const ProjectOverview = () => {
     );
   };
 
-  // Custom animation styles as inline styles when needed
-  const getBounceStyle = (index) => {
-    if (!loaded) return {};
-    return {
-      animation: "bounce-once 1s",
-      animationDelay: `${index * 200}ms`,
-    };
-  };
-
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Dynamic background with animated gradient */}
       <div className="fixed inset-0 bg-black overflow-hidden">
         <div className="absolute top-0 w-full h-full bg-gradient-to-b from-pink-900/10 to-transparent"></div>
-        {/* Using inline styles for custom animations */}
-        <div
-          className="absolute w-1/3 h-1/3 rounded-full bg-pink-500/5 blur-3xl top-1/4 -left-20"
-          style={{ animation: "blob 7s infinite alternate" }}
-        ></div>
-        <div
-          className="absolute w-1/3 h-1/3 rounded-full bg-purple-500/5 blur-3xl bottom-1/4 right-1/4"
-          style={{
-            animation: "blob 7s infinite alternate",
-            animationDelay: "2s",
-          }}
-        ></div>
-        <div
-          className="absolute w-1/4 h-1/4 rounded-full bg-pink-500/5 blur-3xl bottom-1/3 left-1/3"
-          style={{
-            animation: "blob 7s infinite alternate",
-            animationDelay: "4s",
-          }}
-        ></div>
+        <div className="absolute w-1/3 h-1/3 rounded-full bg-pink-500/5 blur-3xl top-1/4 -left-20 animate-blob"></div>
+        <div className="absolute w-1/3 h-1/3 rounded-full bg-purple-500/5 blur-3xl bottom-1/4 right-1/4 animate-blob animation-delay-2000"></div>
+        <div className="absolute w-1/4 h-1/4 rounded-full bg-pink-500/5 blur-3xl bottom-1/3 left-1/3 animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6 py-8">
         {/* Header with animated text */}
         <div
-          className="transition-all duration-1000"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(10px)",
-          }}
+          className={`transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <h1 className="text-4xl font-bold mb-1 flex items-center">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-pink-300">
@@ -415,12 +292,7 @@ const ProjectOverview = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left column - Progress overview */}
           <div
-            className="lg:col-span-1 transition-all duration-1000"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(10px)",
-              transitionDelay: "300ms",
-            }}
+            className={`lg:col-span-1 transition-all duration-1000 delay-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 h-full flex flex-col">
               <h2 className="text-xl font-bold mb-6 text-pink-300">
@@ -437,7 +309,10 @@ const ProjectOverview = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500/10 text-pink-500">
-                      <CheckCircle size={20} style={getBounceStyle(0)} />
+                      <CheckCircle
+                        size={20}
+                        className={loaded ? "animate-bounce-once" : ""}
+                      />
                     </div>
                     <div className="ml-3">
                       <p className="text-gray-400 text-sm">Completed Tasks</p>
@@ -460,7 +335,14 @@ const ProjectOverview = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500/10 text-pink-500">
-                      <AlertTriangle size={20} style={getBounceStyle(1)} />
+                      <AlertTriangle
+                        size={20}
+                        className={
+                          loaded
+                            ? "animate-bounce-once animation-delay-200"
+                            : ""
+                        }
+                      />
                     </div>
                     <div className="ml-3">
                       <p className="text-gray-400 text-sm">At Risk</p>
@@ -474,7 +356,14 @@ const ProjectOverview = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500/10 text-pink-500">
-                      <Clock size={20} style={getBounceStyle(2)} />
+                      <Clock
+                        size={20}
+                        className={
+                          loaded
+                            ? "animate-bounce-once animation-delay-400"
+                            : ""
+                        }
+                      />
                     </div>
                     <div className="ml-3">
                       <p className="text-gray-400 text-sm">Next Deadline</p>
@@ -502,12 +391,7 @@ const ProjectOverview = () => {
 
           {/* Middle column - Task categories visualization */}
           <div
-            className="lg:col-span-2 transition-all duration-1000"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(10px)",
-              transitionDelay: "600ms",
-            }}
+            className={`lg:col-span-2 transition-all duration-1000 delay-600 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 h-full">
               <div className="flex justify-between items-center mb-6">
@@ -557,14 +441,11 @@ const ProjectOverview = () => {
                           <Cell
                             key={`cell-${index}`}
                             fill={entry.color}
-                            style={
+                            className={
                               loaded
-                                ? {
-                                    animation: "glow-once 2s",
-                                    animationDelay: `${index * 200}ms`,
-                                    filter: `drop-shadow(0 0 3px ${entry.color})`,
-                                  }
-                                : {}
+                                ? "animate-glow-once animation-delay-" +
+                                  index * 200
+                                : ""
                             }
                           />
                         ))}
@@ -627,22 +508,8 @@ const ProjectOverview = () => {
                         stroke="#ff4d8d"
                         strokeWidth={3}
                         dot={false}
-                        activeDot={{
-                          r: 8,
-                          style: {
-                            animation:
-                              "ping-slow 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
-                          },
-                        }}
-                        style={
-                          loaded
-                            ? {
-                                animation: "draw-line 1.5s ease-out forwards",
-                                strokeDasharray: "1000",
-                                strokeDashoffset: loaded ? "0" : "1000",
-                              }
-                            : {}
-                        }
+                        activeDot={{ r: 8, className: "animate-ping-slow" }}
+                        className={loaded ? "animate-draw-line" : ""}
                       />
                     </LineChart>
                   </ResponsiveContainer>
@@ -654,12 +521,7 @@ const ProjectOverview = () => {
 
         {/* Bottom section - Visual project timeline */}
         <div
-          className="mt-8 transition-all duration-1000"
-          style={{
-            opacity: loaded ? 1 : 0,
-            transform: loaded ? "translateY(0)" : "translateY(10px)",
-            transitionDelay: "900ms",
-          }}
+          className={`mt-8 transition-all duration-1000 delay-900 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
           <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-2xl border border-gray-800">
             <div className="flex justify-between items-center mb-6">
@@ -690,19 +552,8 @@ const ProjectOverview = () => {
                     className="flex flex-col items-center justify-center relative"
                   >
                     <div
-                      className={`w-6 h-6 rounded-full z-10 ${
-                        milestone <= projectStats.progress
-                          ? "bg-pink-500"
-                          : "bg-gray-700"
-                      }`}
-                      style={
-                        loaded && milestone <= projectStats.progress
-                          ? {
-                              animation: "pulse-once 2s",
-                              animationDelay: `${index * 200}ms`,
-                            }
-                          : {}
-                      }
+                      className={`w-6 h-6 rounded-full z-10 ${milestone <= projectStats.progress ? "bg-pink-500" : "bg-gray-700"} 
+                      ${loaded && milestone <= projectStats.progress ? "animate-pulse-once animation-delay-" + index * 200 : ""}`}
                     ></div>
                     <div className="absolute top-8 text-sm font-medium">
                       <span
@@ -730,11 +581,7 @@ const ProjectOverview = () => {
               ].map((phase, index) => (
                 <div
                   key={index}
-                  className={`p-3 rounded-lg text-center ${
-                    index <= 2
-                      ? "bg-pink-500/20 text-pink-200"
-                      : "bg-gray-800 text-gray-400"
-                  }`}
+                  className={`p-3 rounded-lg text-center ${index <= 2 ? "bg-pink-500/20 text-pink-200" : "bg-gray-800 text-gray-400"}`}
                 >
                   {phase}
                 </div>
@@ -743,6 +590,130 @@ const ProjectOverview = () => {
           </div>
         </div>
       </div>
+
+      {/* Global CSS for custom animations */}
+      <style jsx global>{`
+        @keyframes blob {
+          0% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(30px, -50px) scale(1.1);
+          }
+          66% {
+            transform: translate(-20px, 20px) scale(0.9);
+          }
+          100% {
+            transform: translate(0, 0) scale(1);
+          }
+        }
+
+        @keyframes draw-line {
+          0% {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+          }
+          100% {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes bounce-once {
+          0%,
+          20%,
+          50%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40% {
+            transform: translateY(-10px);
+          }
+          60% {
+            transform: translateY(-5px);
+          }
+        }
+
+        @keyframes glow-once {
+          0% {
+            filter: drop-shadow(0 0 0px #ff4d8d);
+          }
+          50% {
+            filter: drop-shadow(0 0 8px #ff4d8d);
+          }
+          100% {
+            filter: drop-shadow(0 0 0px #ff4d8d);
+          }
+        }
+
+        @keyframes ping-slow {
+          0% {
+            transform: scale(0.8);
+            opacity: 1;
+          }
+          70%,
+          100% {
+            transform: scale(2);
+            opacity: 0;
+          }
+        }
+
+        @keyframes pulse-once {
+          0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 77, 141, 0.7);
+          }
+          70% {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 10px rgba(255, 77, 141, 0);
+          }
+          100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 77, 141, 0);
+          }
+        }
+
+        .animate-blob {
+          animation: blob 7s infinite alternate;
+        }
+
+        .animate-draw-line {
+          animation: draw-line 1.5s ease-out forwards;
+        }
+
+        .animate-bounce-once {
+          animation: bounce-once 1s;
+        }
+
+        .animate-glow-once {
+          animation: glow-once 2s;
+        }
+
+        .animate-ping-slow {
+          animation: ping-slow 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+
+        .animate-pulse-once {
+          animation: pulse-once 2s;
+        }
+
+        .animation-delay-200 {
+          animation-delay: 200ms;
+        }
+
+        .animation-delay-400 {
+          animation-delay: 400ms;
+        }
+
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
     </div>
   );
 };

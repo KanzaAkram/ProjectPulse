@@ -12,7 +12,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-
+import { motion } from "framer-motion";
 import {
   SettingsOutlined,
   ChevronLeft,
@@ -44,14 +44,18 @@ const navItems = [
     icon: <HomeOutlined />,
     path: "overview",
   },
-  // {
-  //   text: "",
-  //   icon: null,
-  // },
+  {
+    text: "Project Task Management",
+    icon: null,
+  },
   {
     text: "Tasks",
     icon: <FormatListBulleted />,
     path: "tasks",
+  },
+  {
+    text: "Project Timeline Management",
+    icon: null,
   },
   {
     text: "Timeline",
@@ -59,14 +63,18 @@ const navItems = [
     path: "timeline",
   },
   {
+    text: "Project Team Management",
+    icon: null,
+  },
+  {
     text: "Team",
     icon: <Diversity1 />,
     path: "team",
   },
-  // {
-  //   text: "Traffic and Transportation",
-  //   icon: null,
-  // },
+  {
+    text: "Project Resources Management",
+    icon: null,
+  },
   {
     text: "Status Reports",
     icon: <Summarize />,
@@ -142,9 +150,20 @@ function Sidebar({
                   gap="0.5rem"
                   width="fit-content"
                 >
-                  <Typography variant="h4" fontWeight="bold">
+                  <Typography
+                    variant="h4"
+                    fontWeight="bold"
+                    component={motion.div}
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1,
+                      ease: "easeInOut",
+                    }}
+                  >
                     Project Pulse Dashboard
                   </Typography>
+
                   {!isNonMobile && (
                     <IconButton
                       onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -225,7 +244,7 @@ function Sidebar({
               gap="1rem"
               m="1.5rem 2rem 1.5rem 3rem"
             >
-              <Box
+              {/* <Box
                 component="img"
                 alt="profile"
                 src={profileImage}
@@ -233,7 +252,7 @@ function Sidebar({
                 width="40px"
                 borderRadius="50%"
                 sx={{ objectFit: "cover" }}
-              />
+              /> */}
               <Box textAlign="left">
                 <Typography
                   fontWeight="bold"
@@ -249,12 +268,12 @@ function Sidebar({
                   {user.occupation}
                 </Typography>
               </Box>
-              <SettingsOutlined
+              {/* <SettingsOutlined
                 sx={{
                   color: theme.palette.secondary[300],
                   fontSize: "25px ",
                 }}
-              />
+              /> */}
             </FlexBetween>
           </Box>
         </Drawer>
