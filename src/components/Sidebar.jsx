@@ -154,7 +154,11 @@ function Sidebar({
                     variant="h4"
                     fontWeight="bold"
                     component={motion.div}
-                    animate={{ scale: [1, 1.1, 1] }}
+                    animate={{
+                      scale: [1, 1.1, 1],
+                      x: [0, -2, 2, -2, 2, 0], // Small horizontal shake effect
+                      y: [0, -1, 1, -1, 1, 0], // Small vertical shake effect
+                    }}
                     transition={{
                       repeat: Infinity,
                       duration: 1,
