@@ -402,7 +402,7 @@ const ProjectOverview = () => {
               </div>
 
               {/* Custom shape visualization for task categories */}
-              <div className="flex flex-wrap justify-center gap-6 mb-8">
+              <div className="flex flex-wrap justify-center gap-10 mb-8">
                 {taskCategories.map((category) => (
                   <div
                     key={category.id}
@@ -545,7 +545,7 @@ const ProjectOverview = () => {
               </div>
 
               {/* Milestone points */}
-              <div className="flex justify-between relative h-20">
+              <div className="flex justify-between relative h-16">
                 {[0, 25, 50, 75, 100].map((milestone, index) => (
                   <div
                     key={index}
