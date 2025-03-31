@@ -37,6 +37,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
 import profileImage from "@/assets/avatar.svg";
+import { Activity } from "lucide-react";
 
 const navItems = [
   {
@@ -154,19 +155,19 @@ function Sidebar({
                     variant="h4"
                     fontWeight="bold"
                     component={motion.div}
-                    animate={{
-                      scale: [1, 1.1, 1],
-                      x: [0, -2, 2, -2, 2, 0], // Small horizontal shake effect
-                      y: [0, -1, 1, -1, 1, 0], // Small vertical shake effect
-                    }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1,
-                      ease: "easeInOut",
-                    }}
+                    // animate={{
+                    //   scale: [1, 1.1, 1],
+                    //   x: [0, -2, 2, -2, 2, 0], // Small horizontal shake effect
+                    //   y: [0, -1, 1, -1, 1, 0], // Small vertical shake effect
+                    // }}
+                    // transition={{ duration: 0.05, ease: "easeInOut" }}
                   >
                     Project Pulse Dashboard
                   </Typography>
+                  <div className="relative">
+                                <Activity className="h-8 w-8 text-pink-500" />
+                                <div className="absolute -inset-1 bg-pink-500 rounded-full opacity-30 animate-ping"></div>
+                              </div>
 
                   {!isNonMobile && (
                     <IconButton

@@ -322,18 +322,16 @@ export default function TeamDashboard() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
                           <div className="relative">
-                            <img
-                              src={member.avatar}
-                              alt={member.name}
-                              className="w-10 h-10 rounded-full object-cover border-2 border-gray-700"
-                            />
+                            <div className="w-10 h-10 rounded-full bg-gray-600 flex items-center justify-center uppercase border-2 border-gray-700">
+                              {member.name.charAt(0)}
+                            </div>
                             <div
                               className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-gray-800 ${
                                 member.status === "online"
                                   ? "bg-green-500"
                                   : member.status === "busy"
-                                  ? "bg-yellow-500"
-                                  : "bg-gray-500"
+                                    ? "bg-yellow-500"
+                                    : "bg-gray-500"
                               }`}
                             ></div>
                           </div>
@@ -357,8 +355,8 @@ export default function TeamDashboard() {
                                     member.workload >= 80
                                       ? "text-red-500"
                                       : member.workload >= 60
-                                      ? "text-yellow-500"
-                                      : "text-green-500"
+                                        ? "text-yellow-500"
+                                        : "text-green-500"
                                   }
                                 >
                                   {Math.round(member.workload)}%

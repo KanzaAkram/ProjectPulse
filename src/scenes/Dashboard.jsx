@@ -545,7 +545,7 @@ const ProjectOverview = () => {
               </div>
 
               {/* Milestone points */}
-              <div className="flex justify-between relative h-16">
+              <div className="flex justify-between relative h-18">
                 {[0, 25, 50, 75, 100].map((milestone, index) => (
                   <div
                     key={index}
@@ -572,7 +572,7 @@ const ProjectOverview = () => {
             </div>
 
             {/* Key achievements */}
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-4">
               {[
                 "Project Start",
                 "Requirements",
